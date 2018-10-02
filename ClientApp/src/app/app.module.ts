@@ -9,13 +9,15 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { LocalComponent } from './locals/local/local.component';
 import { LocalService } from './locals/local.service';
+import { ScheduleComponent } from './schedules/schedule/schedule.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     FetchDataComponent,
-    LocalComponent
+    LocalComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -23,7 +25,7 @@ import { LocalService } from './locals/local.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: LocalComponent, pathMatch: 'full' },
-      { path: 'horaires', component: LocalComponent },
+      { path: 'horaires', component: ScheduleComponent },
     ])
   ],
   providers: [LocalService],

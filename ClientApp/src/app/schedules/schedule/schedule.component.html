@@ -1,0 +1,15 @@
+<div>
+
+</div>
+<form>
+  Local : 
+  <select name="schedule.local" [(ngModel)]="schedule.local">
+      <option [ngValue]="null">-</option>
+      <option *ngFor="let local of locals" [ngValue]="local">{{local.name}}</option>
+  </select>
+  <br/>
+  De 
+  <input type="datetime-local" name="schedule.from" [(ngModel)]="schedule.from" min="2000-00-00T00:00" max="{{schedule.to}}"/>
+   à 
+  <input type="datetime-local" name="schedule.to" [(ngModel)]="schedule.to" min="{{schedule.from}}" max="2100-00-00T00:00"/>
+</form>

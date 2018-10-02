@@ -57,4 +57,9 @@ export class LocalComponent implements OnInit {
     }
   }
 
+  async delete(){
+    await this.localService.deleteLocal(this.form.id);
+    this.form = new Local();
+  }
+
 }

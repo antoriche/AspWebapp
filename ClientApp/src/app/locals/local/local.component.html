@@ -14,5 +14,6 @@
     nom : <input name="name" [(ngModel)]="form.name"/><br>
     nombre de places : {{form.numberSeat}}<input type="range" min="1" max="50" name="numberSeat" [(ngModel)]="form.numberSeat" /><br>
     <button (click)="save()">Enregistrer</button>
+    <button [style.display]="form.id?'inline':'none'" (click)="delete()">Supprimer</button>
   </form>
 </div>

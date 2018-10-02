@@ -25,7 +25,7 @@ namespace AspWebapp.Database{
         }
 
         public Local InsertLocal(Local local){
-            local.id = locals.Max(l=>l.id)+1;
+            local.id = locals.Any() ? locals.Max(l=>l.id)+1 : 1;
             locals.Add(local);
             return local;
         }
@@ -38,6 +38,13 @@ namespace AspWebapp.Database{
             else
                 return null;
             return updatedLocal;
+        }
+
+        public Local DeleteLocal(int id){
+            Local ret = locals.Where(x => x.id == id).FirstOrDefault();
+            if(ret != null)
+                this.locals = new List<Local>(locals.Where(x => x.id != id));
+            return ret;
         }
     }
 }

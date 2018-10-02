@@ -67,6 +67,15 @@ export class LocalService {
     });
   }
 
+  deleteLocal(id:number){
+    return new Promise((resolve, reject)=> {
+      this.http.delete<Local>(this.baseUrl+"api/local/"+id)
+      .subscribe(local=>{
+        this.fetchLocalsOnServer().then(_=>resolve(local));
+      }, console.error);
+    })
+  }
+
   findLocalByName(name:string){
     return this.locals.filter(elt=>elt.name === name)[0];
   }

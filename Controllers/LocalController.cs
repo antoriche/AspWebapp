@@ -33,9 +33,9 @@ namespace AspWebapp.Controllers
         [HttpPost()]
         public Local AddNewLocal([FromBody]Local newLocal)
         {
-            if(db.FindLocalByName(newLocal.name)){
-                // Another local has already this name
-                // Should change status code
+            if(!newLocal.validate() || db.FindLocalByName(newLocal.name) != null){
+                // posted local not valid
+                // Should change status code and send error message
                 return null;
             }
             return db.InsertLocal(newLocal);
@@ -44,7 +44,19 @@ namespace AspWebapp.Controllers
         [HttpPut()]
         public Local UpdateLocal([FromBody]Local updatedLocal)
         {
+            Local samename = db.FindLocalByName(updatedLocal.name);
+            if(!updatedLocal.validate() || (samename != null && samename.id != updatedLocal.id ) ){
+                // Should change status code and send error message
+                return null;
+            }
             return db.UpdateLocal(updatedLocal);
+        }
+
+        [Route("{id}")]
+        [HttpDelete()]
+        public Local DeleteLocal(int id)
+        {
+            return db.DeleteLocal(id);
         }
     }
 }

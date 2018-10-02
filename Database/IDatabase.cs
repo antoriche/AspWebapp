@@ -11,6 +11,6 @@ namespace AspWebapp.Database{
         Local FindLocalByName(string name);
         Local InsertLocal(Local local);
         Local UpdateLocal(Local updatedLocal);
-        
+        Local DeleteLocal(int id);
     }
 }

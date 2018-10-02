@@ -1,0 +1,2 @@
+Did you mean to run dotnet SDK commands? Please install dotnet SDK from:
+  http://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409

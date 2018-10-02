@@ -1,0 +1,18 @@
+<div style="display: flex; margin: 10px;" >
+  <div style="margin-right:10px;">
+    <button (click)="refresh()" style="display: block; width: 100%;"><i class="glyphicon glyphicon-refresh"></i></button>
+    <select size=10 (change)="selectionChange($event)" >
+      <option *ngFor="let local of localService.getLocals()" [selected]="form.id === local.id" value="{{local.id}}" >
+        {{local.name}}
+      </option>
+      <option [selected]="!form.id" value="">Nouveau local</option>
+    </select>
+  </div>
+  <form>
+    <input type="hidden" name="id" [(ngModel)]="form.id" />
+    <span style="color:red;">{{errorMessage}}</span><br>
+    nom : <input name="name" [(ngModel)]="form.name"/><br>
+    nombre de places : {{form.numberSeat}}<input type="range" min="1" max="50" name="numberSeat" [(ngModel)]="form.numberSeat" /><br>
+    <button (click)="save()">Enregistrer</button>
+  </form>
+</div>
